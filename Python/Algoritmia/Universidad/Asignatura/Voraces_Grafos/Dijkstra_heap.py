@@ -1,12 +1,13 @@
 #O(n * log(n))
 import heapq
-def dijkstra(graph, num_nodes, i, f):
+def dijkstra(graph: list, num_nodes: int, i: int, f: int) -> list:
     distances = [float('inf')] * nodes
     distances[i] = 0
     priority_queue = [(0, i)]
     while len(priority_queue) > 0:
         accumulated_weight, current_node = heapq.heappop(priority_queue)
-        
+        if accumulated_weight > distances[current_node]:
+            
     return distances[f]
 
 graph = []
