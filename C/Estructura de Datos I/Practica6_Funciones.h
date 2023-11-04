@@ -16,12 +16,12 @@ typedef struct nodo
     struct nodo* ant;    
 }tNodo;
 
-typedef tNodo* tLista;
+typedef tNodo* tPila;
 
-tLista Crear_Vacia();
+tPila Crear_Vacia();
 tElemento Crear_Videojuego(char titulo[100], char genero[100], float puntuacion, float precio);
 tNodo* Crear_Nodo(tElemento elemento);
-void push(tLista* lista, tElemento elemento);
-void pop(tLista* lista);
-void Mostrar_Gratis(tLista lista);
+void push(tPila* pila, tElemento elemento);
+void pop(tPila* pila);
+void Mostrar_Gratis(tPila pila);
 #endif

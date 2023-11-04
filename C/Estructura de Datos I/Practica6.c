@@ -4,7 +4,7 @@
 #include <string.h>
 int main()
 {
-    tLista lista = Crear_Vacia();
+    tPila pila = Crear_Vacia();
     tElemento videojuego;
     char titulo[100], genero[100];
     float puntuacion, precio;
@@ -40,15 +40,15 @@ int main()
             printf("Precio del videojuego: ");
             scanf("%f", &precio);
             videojuego = Crear_Videojuego(titulo, genero, puntuacion, precio);
-            push(&lista, videojuego);
+            push(&pila, videojuego);
             break;
 
         case 2:
-            pop(&lista);
+            pop(&pila);
             break;
 
         case 3:
-            Mostrar_Gratis(lista);
+            Mostrar_Gratis(pila);
             break;
 
         default:

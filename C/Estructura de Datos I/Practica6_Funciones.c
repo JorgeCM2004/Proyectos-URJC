@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-tLista Crear_Vacia()
+tPila Crear_Vacia()
 {
     return NULL;
 }
@@ -26,36 +26,36 @@ tNodo* Crear_Nodo(tElemento elemento)
     return aux;
 }
 
-void push(tLista* lista, tElemento elemento)
+void push(tPila* pila, tElemento elemento)
 {
     tNodo* nodo_nuevo = Crear_Nodo(elemento);
-    if ((*lista) != NULL)
+    if ((*pila) != NULL)
     {
-        nodo_nuevo -> ant = *lista;
+        nodo_nuevo -> ant = *pila;
     }
-    *lista = nodo_nuevo;
+    *pila = nodo_nuevo;
 }
 
-void pop(tLista* lista)
+void pop(tPila* pila)
 {
-    if ((*lista) != NULL)
+    if ((*pila) != NULL)
     {
-        tNodo* aux = (*lista);
-        (*lista) = (*lista) -> ant;
+        tNodo* aux = (*pila);
+        (*pila) = (*pila) -> ant;
         free(aux);
     }else 
     {
-        printf("La lista esta vacia.\n");
+        printf("La pila esta vacia.\n");
     }
 }
 
-void Mostrar_Gratis(tLista lista)
+void Mostrar_Gratis(tPila pila)
 {
-    tNodo* recorrer = lista;
+    tNodo* recorrer = pila;
     int gratis = 0;
-    if (lista == NULL)
+    if (pila == NULL)
     {
-        printf("La lista esta vacia.\n");
+        printf("La pila esta vacia.\n");
         gratis = 1;
     }
     while (recorrer)
@@ -71,6 +71,6 @@ void Mostrar_Gratis(tLista lista)
     }
     if (gratis == 0)
     {
-        printf("No existe ningun juego gratis en la lista.\n");
+        printf("No existe ningun juego gratis en la pila.\n");
     }
 }
