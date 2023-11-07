@@ -6,7 +6,7 @@ def dijkstra(graph: list, num_nodes: int, i: int, f: int) -> list:
     priority_queue = [(0, i)]
     while len(priority_queue) > 0:
         accumulated_weight, current_node = heapq.heappop(priority_queue)
-        if accumulated_weight > distances[current_node]:
+        if accumulated_weight < distances[current_node]:
             pass
     return distances[f]
 
