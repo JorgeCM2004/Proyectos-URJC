@@ -1,19 +1,22 @@
-def backtraking(l: list, n: int, pos: int) -> list:
-    bol = None not in l
-    if bol:
+def backtracking(l: list, n: int, pos: int) -> list:
+    if pos == n and factible(l):
         return l
-    else:
-        recorrer = 0
-        while recorrer < n and not bol:
-            l[pos] = recorrer
-            if factible(l):
-                return backtraking(l, n, pos + 1)
-            recorrer += 1
+    recorrer = 0
+    while recorrer < n and pos < n:
+        l[pos] = recorrer
+        if (factible(l)):
+            resultado = backtracking(l, n, pos + 1)
+            if resultado is not None and factible(resultado):
+                return resultado
+        l[pos] = None
+        recorrer += 1
+    return None
+
             
 def factible(l: list) -> bool:
     laux = []
     recorrer = 0
-    while recorrer < len(l) - 1 and l[recorrer] != None:
+    while recorrer < len(l) and l[recorrer] != None:
         laux.append(l[recorrer])
         recorrer += 1
     out = True
@@ -29,5 +32,18 @@ def conflicto(xdama1: int, ydama1: int, xdama2: int, ydama2: int):
 
 num = int(input())
 lista = [None] * num
-repuesta = backtraking(lista, num, 0)
-print(repuesta)
+repuesta = backtracking(lista, num, 0)
+blanco = True
+for x in range(num):
+    for y in range(num):
+        if repuesta[x] == y:
+            print('👑', end='')
+        else:
+            if blanco:
+                print('⬜', end='')
+            else:
+                print('⬛', end='')
+        blanco = not blanco
+    if num % 2 == 0:
+        blanco = not blanco
+    print()
