@@ -5,17 +5,12 @@ def cerveza(l: list, i: int, nodes: int) -> list:
     distances[i][0] = 0
     not_visited = [True] * nodes
     while True in not_visited:
-        neighbor = list(filter(lambda x: x[1] == i or x[2] == i, l))
+        neighbor = l[i]
         accum_weight = distances[i][0]
         for x in neighbor:
-            if x[1] == i:
-                if accum_weight + x[0] < distances[x[2]][0]:
-                    distances[x[2]][0] = accum_weight + x[0]
-                    distances[x[2]][1] = x[1]
-            else:
-                if accum_weight + x[0] < distances[x[1]][0]:
-                    distances[x[1]][0] = accum_weight + x[0]
-                    distances[x[1]][1] = x[2]
+            if accum_weight + x[1] < distances[x[0]][0]:
+                distances[x[0]][0] = accum_weight + x[1]
+                distances[x[0]][1] = i
         not_visited[i] = False
         i = None
         for x in range(nodes):
@@ -24,10 +19,13 @@ def cerveza(l: list, i: int, nodes: int) -> list:
     return distances
 
 nodes, edges = map(int, input().strip().split())
-graph = []
+graph = {}
+for i in range(nodes):
+    graph.update({i: []})
 for i in range(edges):
     cerveza1, cerveza2, coste = map(int, input().strip().split())
-    graph.append((coste, cerveza1, cerveza2))
+    graph[cerveza1].append((cerveza2, coste))
+    graph[cerveza2].append((cerveza1, coste))
 i, f = map(int, input().strip().split())
 out = cerveza(graph, i, nodes)
 print(out[f][0])
