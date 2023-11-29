@@ -1,0 +1,4 @@
+#ifndef PRACTICA7_FUNCIONES_H
+#define PRACTICA7_FUNCIONES_H
+
+#endif
