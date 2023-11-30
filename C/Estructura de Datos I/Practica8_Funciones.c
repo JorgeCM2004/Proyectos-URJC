@@ -7,31 +7,26 @@ void Crear_Arbol_Vacio(tOlimpo* a)
     *a = NULL;
 }
 
-void Construir(tNodo* raiz, tNodo* hDerecho, tNodo* hIzquierdo, tOlimpo* olimpo)
+void Construir(tNodo** raiz, tNodo* hDerecho, tNodo* hIzquierdo, tOlimpo* olimpo)
 {
-    raiz -> derecho = hDerecho;
-    raiz -> izquierdo = hIzquierdo;
-    *olimpo = raiz;
+    (*raiz) -> derecho = hDerecho;
+    (*raiz) -> izquierdo = hIzquierdo;
+    *olimpo = *raiz;
 }
 
-void Crear_Nodo(tNodo* direccion, tElemento* informacion)
+void Crear_Nodo(tNodo** direccion, tElemento informacion)
 {
-    direccion = (tNodo*) malloc(sizeof(tNodo));
-    Copiar_Info(&direccion, informacion);
-    direccion -> derecho = NULL;
-    direccion -> izquierdo = NULL;
+    *direccion = (tNodo*) malloc(sizeof(tNodo));
+    strcpy((*direccion) -> info.nombre, informacion.nombre);
+    strcpy((*direccion) -> info.descripcion, informacion.descripcion);
+    (*direccion) -> derecho = NULL;
+    (*direccion) -> izquierdo = NULL;
 }
 
 void Crear_Dios(tElemento* direccion, char nombre[20], char informacion[200])
 {
     strcpy(direccion -> nombre, nombre);
     strcpy(direccion -> descripcion, informacion);
-}
-
-void Copiar_Info(tNodo** direccion, tElemento* informacion)
-{
-    strcpy((*direccion) -> info.nombre, informacion -> nombre);
-    strcpy((*direccion) -> info.descripcion, informacion -> descripcion);
 }
 
 void Kratos(tOlimpo* Arbol)

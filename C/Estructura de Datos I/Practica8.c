@@ -3,12 +3,12 @@
 
 int main()
 {
-    tOlimpo p;
-    tNodo vacio, nodo;
+    tOlimpo p, vacio;
+    tNodo* nodo;
     tElemento copy;
     Crear_Arbol_Vacio(&vacio);
     Crear_Dios(&copy, "Zeus", "Dios padre, mato a cronos para hacerse con el Olimpo");
-    Crear_Nodo(&nodo, &copy);
-    Construir( &nodo, &vacio, &vacio, &p);
+    Crear_Nodo(&nodo, copy);
+    Construir(&nodo, vacio, vacio, &p);
     Imprimir_Dios(copy);
 }
