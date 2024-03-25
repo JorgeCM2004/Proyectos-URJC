@@ -70,3 +70,21 @@ int main()
     cout << "El modulo del punto a es: " << a.modulo() << endl;
     return 0;
 }
+
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+
+struct Punto
+{
+    T x, y, z;
+};
+
+int main()
+{
+    Punto <int> pint{1, 2, 3};
+    Punto <double> pdouble{1.0, 2.0, 3.0};
+    return 0;
+}
